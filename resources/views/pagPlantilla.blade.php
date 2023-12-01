@@ -7,10 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
-    <div class="container my-4">
+    <div class="container my-5">
         <a href="{{ route('xInicio') }}" class="btn btn-primary">Inicio</a>
         <a href="{{ route('xGaleria') }}" class="btn btn-warning">Galeria</a>
         <a href="{{ route('xLista') }}" class="btn btn-success">Lista</a>
+      
     </div>
     
     <div class="container my-4">

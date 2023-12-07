@@ -1,4 +1,4 @@
-@extends('pagDetalle')
+@extends('pagPlantilla')
 
 @section('titulo')
     <h1 class="display-4">PAGINA DE DETALLE... </h1>

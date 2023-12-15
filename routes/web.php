@@ -4,16 +4,35 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 
-Route::get('/', [PagesController::class, 'fnIndex']) -> name('xIndex');
+//model o modelo esta relacionado con el dato de las tablas
+
+Route::get('/', [PagesController::class, 'fnIndex']) -> name('xInicio');
+
 Route::post('/', [PagesController::class, 'fnRegistrar']) -> name('Estudiante.xRegistrar');
 
-
 Route::get('/detalle/{id}', [PagesController::class, 'fnEstDetalle']) -> name('Estudiante.xDetalle');
-Route::get('/galeria/{numero?}', [PagesController::class, 'fnGaleria']) -> where('numero', '[0-9]+') -> name('xGaleria');
-Route::get('/lista', [PagesController::class, 'fnLista']) -> name('xLista');
 
 Route::get('/actualizar/{id}', [PagesController::class, 'fnEstActualizar']) -> name('Estudiante.xActualizar');
-Route::get('/actualizar/{id}', [PagesController::class, 'fnUpdate']) -> name('Estudiante.xUpdate');
+Route::put('/actualizar/{id}', [PagesController::class, 'fnUpdate']) -> name('Estudiante.xUpdate');
+
+Route::delete('/eliminar/{id}', [PagesController::class, 'fnEliminar']) -> name('Estudiante.xEliminar');
+
+Route::get('/galeria/{numero?}', [PagesController::class, 'fnGaleria']) -> where('numero', '[0-9]+') -> name('xGaleria');
+
+Route::get('/lista', [PagesController::class, 'fnLista']) -> name('xLista');
+
+// =================================================
+
+Route::post('/', [PagesController::class, 'fnRegistrarSeg']) -> name('Seguimiento.xRegistrarSeg');
+
+Route::get('/detalle/{id}', [PagesController::class, 'fnSegDetalle']) -> name('Seguimiento.xDetalleSeg');
+
+Route::get('/listaseguimientos', [PagesController::class, 'fnListaSeguimiento']) -> name('xListaSeguimiento');
+
+Route::delete('/eliminar/{id}', [PagesController::class, 'fnEliminarSeg']) -> name('Seguimiento.xEliminarSeg');
+
+Route::get('/actualizar/{id}', [PagesController::class, 'fnSegActualizar']) -> name('Seguimiento.xActualizarSeg');
+Route::put('/actualizar/{id}', [PagesController::class, 'fnUpdateSeg']) -> name('Seguimiento.xUpdateSeg');
 
 
 /*
@@ -27,37 +46,28 @@ Route::get('/actualizar/{id}', [PagesController::class, 'fnUpdate']) -> name('Es
 |
 */
 /*
-//router,metodo de envio/la ruta
 Route::get('/', function () {
     return view('welcome');
 }) -> name('xInicio');
 
-
-
 Route::get('/saludo', function () {
-    return "Hola mundo ... desde laravel.... LUIS SAMUEL VASQUEZ LABRA";
+    return "HOLA MUNDO DESDE LARAVEL...";
 });
 
-/*
-//Route::get('/galeria/{numero?}', function ($numero=null) {
-Route::get('/galeria/{numero}', function ($numero) {
+Route::get('/galeria/{numero?}', function ($numero=null) {
     return "Este es el codigo de la foto: ".$numero;
 }) -> where('numero', '[0-9]+');
 
-*/
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-/*
-
 Route::view('/galeria', 'pagGaleria', ['valor' => 15]) -> name('xGaleria');
-
 
 Route::get('/lista', function () {
     return view('pagLista');
 }) -> name('xLista');
-
 */
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
